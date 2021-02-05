@@ -56,6 +56,8 @@ app.post("/createPresentation", async (req, res) => {
 
     const keyToUse = Ed25519KeyPair.from(key);
 
+    keyToUse.id = keyToUse.controller + keyToUse.id;
+
     const suite = new Ed25519Signature2018({
         key: keyToUse,
         date: new Date().toISOString()
